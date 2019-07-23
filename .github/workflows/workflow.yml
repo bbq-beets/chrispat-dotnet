@@ -16,3 +16,11 @@ jobs:
 
     - name: Build with dotnet
       run: dotnet build --configuration Release
+      
+    - env: ${{ toJson(github) }}
+    
+    - env: ${{ toJson(job) }}
+    
+    - env: ${{ toJson(steps) }}
+    
+    - env: ${{ toJson(runner) }}
