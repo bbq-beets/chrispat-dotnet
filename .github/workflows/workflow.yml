@@ -1,0 +1,18 @@
+on: [push]
+
+name: ASP.NET Core
+
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    actions:
+    
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@master
+      with:
+        version: 2.1.504
+
+    - name: Build with dotnet
+      run: dotnet build --configuration Release
