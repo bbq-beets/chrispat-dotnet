@@ -51,4 +51,4 @@ jobs:
         fi
       if: github.event.pull_request != ''
       env:
-        TARGET_BRANCH: ${{ format('refs/heads/{0}', github.event.pull_request.base.ref) }}
+        TARGET_BRANCH: ${{ github.event.pull_request.base.ref }}
