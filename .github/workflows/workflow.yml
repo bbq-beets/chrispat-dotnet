@@ -37,6 +37,7 @@ jobs:
         
     - run: |
         if [ ${{ github.event.pull_request.head.repo.full_name }} == ${{ github.event.pull_request.base.rep.full_name }} ];
+        then
           echo "Hello base repo"
         else
           echo "Hello fork repo"
