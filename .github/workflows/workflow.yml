@@ -17,10 +17,18 @@ jobs:
     - name: Build with dotnet
       run: dotnet build --configuration Release
       
-    - run: ${{ toJson(github) }}
+    - run: echo $github_payload
+      env: 
+        github_payload: ${{ toJson(github) }}
     
-    - run: ${{ toJson(job) }}
+    - run: echo $job_payload
+      env:
+        job_payload: ${{ toJson(job) }}
     
-    - run: ${{ toJson(steps) }}
+    - run: echo $steps_payload
+      env:
+        steps_payload: ${{ toJson(steps) }}
     
-    - run: ${{ toJson(runner) }}
+    - run: echo $runner_payload
+      env:
+        runner_payload: ${{ toJson(runner) }}
