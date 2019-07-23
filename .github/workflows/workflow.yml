@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     actions:
     
+    - uses: uses: actions/checkout@master
+    
     - name: Setup .NET Core
       uses: actions/setup-dotnet@master
       with:
