@@ -41,3 +41,4 @@ jobs:
         else
           echo "Hello fork repo"
         fi
+      if: github.event.pull_request != ''
