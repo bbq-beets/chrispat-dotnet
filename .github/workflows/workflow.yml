@@ -8,6 +8,7 @@ jobs:
     name: Build
     runs-on: ${{ matrix.vm }}
     strategy:
+      fail-fast: false
       matrix:
         vm: ['ubuntu-latest', 'macos-latest', 'windows-latest']
         
