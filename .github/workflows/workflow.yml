@@ -9,7 +9,8 @@ jobs:
     runs-on: ${{ matrix.vm }}
     strategy:
       matrix:
-        vm: ['ubuntu-latest', 'macos-latest, 'windows-latest']
+        vm: ['ubuntu-latest', 'macos-latest', 'windows-latest']
+        
     actions:
     
     - uses: actions/checkout@master
