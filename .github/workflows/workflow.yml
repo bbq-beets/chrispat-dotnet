@@ -6,7 +6,10 @@ jobs:
 
   build:
     name: Build
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.vm }}
+    strategy:
+      matrix:
+        vm: ['ubuntu-latest', 'macos-latest, 'windows-latest']
     actions:
     
     - uses: actions/checkout@master
@@ -18,22 +21,6 @@ jobs:
 
     - name: Build with dotnet
       run: dotnet build --configuration Release
-      
-    - run: echo $github_payload
-      env: 
-        github_payload: ${{ toJson(github) }}
-    
-    - run: echo $job_payload
-      env:
-        job_payload: ${{ toJson(job) }}
-    
-    - run: echo $steps_payload
-      env:
-        steps_payload: ${{ toJson(steps) }}
-    
-    - run: echo $runner_payload
-      env:
-        runner_payload: ${{ toJson(runner) }}
         
     - run: |
         if [ '${{ github.event.pull_request.head.ref }}' == '${{ github.event.pull_request.base.ref }}' ];
