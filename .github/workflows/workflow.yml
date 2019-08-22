@@ -1,4 +1,4 @@
-on: [push]
+on: [push, pull_request]
 
 name: ASP.NET Core
 
@@ -6,28 +6,38 @@ jobs:
 
   build:
     name: Build
-    runs-on: ${{ matrix.vm }}
-    strategy:
-      fail-fast: false
-      matrix:
-        vm: ['ubuntu-latest', 'macos-latest', 'windows-latest']
-        
-    actions:
+
+    runs-on: ubuntu-latest
+    steps:
     
-#    - uses: actions/checkout@master
+    - uses: actions/checkout@v1
     
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@master
+      id: setup-dotnet
+      uses: actions/setup-dotnet@v1
       with:
         version: 2.2.300
 
     - name: Build with dotnet
+      id: build-dotnet
       run: dotnet build --configuration Release
-        
-    - run: |
-        if [ '${{ github.event.pull_request.head.ref }}' == '${{ github.event.pull_request.base.ref }}' ];
-          echo "Hello base repo"
-        else
-          echo "Hello fork repo"
-        fi
-      if: github.event.pull_request != ''
+
+    - run: echo $runner_payload
+      id: dump-runner
+      env:
+        runner_payload: ${{ toJson(runner) }}
+      
+    - run: echo $github_payload
+      id: dump-github
+      env: 
+        github_payload: ${{ toJson(github) }}
+    
+    - run: echo $job_payload
+      id: dump-job
+      env:
+        job_payload: ${{ toJson(job) }}
+    
+    - run: echo $steps_payload
+      id: dump-steps
+      env:
+        steps_payload: ${{ toJson(steps) }}
