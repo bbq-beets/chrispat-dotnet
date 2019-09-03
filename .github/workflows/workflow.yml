@@ -53,7 +53,7 @@ jobs:
       env:
         steps_payload: ${{ toJson(steps) }}
         
-    - run: echo $strategy_payload ${{ always() }}
+    - run: echo $strategy_payload
       id: dump-strategy
       env:
         strategy_payload: ${{ toJson(strategy) }}
