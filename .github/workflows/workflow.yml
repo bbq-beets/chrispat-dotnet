@@ -1,5 +1,8 @@
-on: [push, pull_request, release]
-
+on: 
+  pull_request:
+    branches:
+    - master
+    
 # comments
 name: ASP.NET Core
 
@@ -12,7 +15,7 @@ jobs:
       matrix:
         os: [ ubuntu-latest, windows-latest ]
         
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     steps:
     
     - uses: actions/checkout@v1
@@ -47,7 +50,8 @@ jobs:
       env:
         steps_payload: ${{ toJson(steps) }}
         
-    - run: echo $strategy_payload
+    - run: echo $strategy_payload ${{ always() }}
       id: dump-strategy
       env:
         strategy_payload: ${{ toJson(strategy) }}
+      
