@@ -7,7 +7,11 @@ jobs:
 
   build:
     name: Build
-
+    
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-latest ]
+        
     runs-on: ubuntu-latest
     steps:
     
@@ -42,3 +46,8 @@ jobs:
       id: dump-steps
       env:
         steps_payload: ${{ toJson(steps) }}
+        
+    - run: echo $strategy_payload
+      id: dump-strategy
+      env:
+        strategy_payload: ${{ toJson(strategy) }}
