@@ -27,7 +27,7 @@ jobs:
       id: setup-dotnet
       uses: actions/setup-dotnet@fix-regex
       with:
-        version: 2.2.300
+        dotnet-version: 2.2.300
 
     - name: Build with dotnet
       id: build-dotnet
