@@ -20,16 +20,6 @@ jobs:
         
     runs-on: ${{ matrix.os }}
     steps:
-        
-    - name: Setup .NET Core
-      id: setup-dotnet
-      uses: actions/setup-dotnet@fix-regex
-      with:
-        dotnet-version: 2.2.300
-
-    - name: Build with dotnet
-      id: build-dotnet
-      run: dotnet build --configuration Release
 
     - run: echo $runner_payload
       id: dump-runner
