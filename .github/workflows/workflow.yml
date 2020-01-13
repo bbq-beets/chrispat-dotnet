@@ -20,9 +20,7 @@ jobs:
         
     runs-on: ${{ matrix.os }}
     steps:
-    
-    - uses: actions/checkout@v1
-    
+        
     - name: Setup .NET Core
       id: setup-dotnet
       uses: actions/setup-dotnet@fix-regex
