@@ -5,8 +5,7 @@ on:
   push:
     branches:
     - master
-  schedule:
-    - cron: '*/5 * * * *'
+
     
 # comments
 name: ASP.NET Core
