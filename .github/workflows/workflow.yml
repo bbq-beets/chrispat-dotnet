@@ -47,4 +47,4 @@ jobs:
       env:
         strategy_payload: ${{ toJson(strategy) }}
         
-    - run: docker version      
+    - run: eval $(docker-machine env default)  
