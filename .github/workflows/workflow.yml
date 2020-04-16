@@ -47,4 +47,5 @@ jobs:
       env:
         strategy_payload: ${{ toJson(strategy) }}
         
-    - run: eval $(docker-machine env default)  
+    - run: docker-machine ls
+      if: matrix.os == 'macos-latest'
