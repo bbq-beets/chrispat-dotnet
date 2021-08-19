@@ -21,7 +21,9 @@ jobs:
         
     runs-on: ${{ matrix.os }}
     steps:
-
+    - run: docker-machine ls
+      if: matrix.os == 'macos-latest'
+    
     - run: echo $runner_payload
       id: dump-runner
       env:
@@ -47,8 +49,6 @@ jobs:
       env:
         strategy_payload: ${{ toJson(strategy) }}
         
-    - run: docker-machine ls
-      if: matrix.os == 'macos-latest'
-    
+
     - run: cat C:\Windows\System32\drivers\etc\hosts
       if: matrix.os == 'windows-latest'
