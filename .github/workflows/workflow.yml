@@ -5,6 +5,7 @@ on:
   push:
     branches:
     - master
+  workflow_call:
 
     
 # comments
@@ -48,7 +49,5 @@ jobs:
       id: dump-strategy
       env:
         strategy_payload: ${{ toJson(strategy) }}
-    
-    - run: sleep 5000
         
 
