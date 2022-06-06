@@ -21,10 +21,7 @@ jobs:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
         
     runs-on: ${{ matrix.os }}
-    steps:
-    - run: ext 1
-      if: matrix.os == 'macos-latest'
-      
+    steps:      
     - run: echo $runner_payload
       id: dump-runner
       env:
